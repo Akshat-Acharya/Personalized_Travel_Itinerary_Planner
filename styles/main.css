@@ -1,0 +1,596 @@
+/* 
+ * RoamCraft Pure Light Theme
+ * High-Contrast, Crystal-Clear Consumer Travel Architecture.
+ * Designed for perfect legibility across all monitors and system theme settings.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-text: #0f172a;
+  --secondary-text: #334155;
+  --muted-text: #64748b;
+  --accent-terra: #e05a47;
+  --accent-emerald: #059669;
+  --bg-page: #f8fafc;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --border-strong: #cbd5e1;
+  --border-subtle: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 10px 24px -4px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 32px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* Force light background on entire application */
+[data-testid="stAppViewContainer"], .main, .stApp, html, body {
+  background-color: var(--bg-page) !important;
+  color: var(--primary-text) !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Hide Streamlit Sidebar Completely */
+[data-testid="stSidebar"], [data-testid="collapsedControl"] {
+  display: none !important;
+}
+
+/* Content Container Max Width */
+.main .block-container {
+  max-width: 1220px !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 4rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+/* Global Headings */
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--primary-text) !important;
+}
+
+p, span, div {
+  color: var(--secondary-text);
+}
+
+/* ========================================================= */
+/* CRISP HIGH-CONTRAST FORM CONTROLS (SOLVES INVISIBLE INPUTS) */
+/* ========================================================= */
+
+/* All Widget Labels */
+label, 
+[data-testid="stWidgetLabel"], 
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] span {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  margin-bottom: 6px !important;
+}
+
+/* Text Inputs */
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {
+  border-color: #e05a47 !important;
+  box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.15) !important;
+}
+
+[data-testid="stTextInput"] input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+}
+
+/* Selectboxes & Dropdowns */
+[data-testid="stSelectbox"] div[data-baseweb="select"],
+[data-testid="stMultiSelect"] div[data-baseweb="select"] {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03) !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within,
+[data-testid="stMultiSelect"] div[data-baseweb="select"]:focus-within {
+  border-color: #e05a47 !important;
+  box-shadow: 0 0 0 3px rgba(224, 90, 71, 0.15) !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] * {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Dropdown Menu Options (Popover) */
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] ul,
+ul[role="listbox"],
+li[role="option"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+li[role="option"] {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  padding: 10px 14px !important;
+}
+
+li[role="option"]:hover, 
+li[aria-selected="true"] {
+  background-color: #fee2e2 !important;
+  color: #b91c1c !important;
+  font-weight: 700 !important;
+}
+
+/* Multi-select Tags */
+span[data-baseweb="tag"] {
+  background-color: #f1f5f9 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 999px !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+span[data-baseweb="tag"] span {
+  color: #0f172a !important;
+}
+
+/* Date Input */
+[data-testid="stDateInput"] input {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+}
+
+div[data-baseweb="calendar"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 14px !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+div[data-baseweb="calendar"] * {
+  color: #0f172a !important;
+}
+
+/* Slider Controls */
+[data-testid="stSlider"] p,
+[data-testid="stSlider"] span {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+/* Radio Buttons */
+[data-testid="stRadio"] label,
+[data-testid="stRadio"] p,
+[data-testid="stRadio"] span {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Expanders */
+[data-testid="stExpander"] {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
+}
+
+[data-testid="stExpander"] summary {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+/* ========================================================= */
+/* LUXURY BRANDING & COMPONENT STYLING */
+/* ========================================================= */
+
+/* Luxury Brand Header */
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 20px 0;
+  margin-bottom: 20px;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.brand-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo span {
+  color: var(--accent-terra) !important;
+}
+
+.brand-tagline {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b !important;
+  margin-top: 2px;
+}
+
+.header-status-pill {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #047857 !important;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(5, 150, 105, 0.1);
+}
+
+/* Master Planning Card (Floating Panel) */
+.planner-panel {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 26px 32px !important;
+  margin-bottom: 28px !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.planner-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Tab Navigation - Crisp Light Pill Tabs */
+.stTabs [data-baseweb="tab-list"] {
+  gap: 10px;
+  background-color: #e2e8f0 !important;
+  padding: 6px !important;
+  border-radius: 14px !important;
+  border: 1px solid #cbd5e1 !important;
+  margin-bottom: 24px;
+}
+
+.stTabs [data-baseweb="tab"] {
+  height: 46px;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #334155 !important;
+  padding: 0 22px;
+  border: none !important;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.stTabs [aria-selected="true"] {
+  background-color: #ffffff !important;
+  color: #e05a47 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+  font-weight: 800 !important;
+}
+
+/* Metric Cards */
+.metric-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 18px 22px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1 !important;
+}
+
+.metric-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b !important;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #0f172a !important;
+}
+
+.metric-sub {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b !important;
+  margin-top: 2px;
+}
+
+/* Day Cluster Header Bar */
+.cluster-header-bar {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  padding: 16px 22px !important;
+  border-radius: 14px !important;
+  margin-bottom: 16px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #ffffff !important;
+}
+
+.cluster-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fatigue-badge {
+  background: rgba(16, 185, 129, 0.25) !important;
+  border: 1px solid #10b981 !important;
+  color: #a7f3d0 !important;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+/* Time Slot Cards */
+.slot-tile {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-left: 5px solid #cbd5e1 !important;
+  border-radius: 0 14px 14px 0 !important;
+  padding: 18px 22px !important;
+  margin-bottom: 14px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.2s ease;
+}
+
+.slot-tile:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateX(3px);
+  border-color: #cbd5e1 !important;
+}
+
+.slot-tile.morning { border-left-color: #f59e0b !important; }
+.slot-tile.lunch { border-left-color: #10b981 !important; }
+.slot-tile.afternoon { border-left-color: #3b82f6 !important; }
+.slot-tile.evening { border-left-color: #8b5cf6 !important; }
+
+.slot-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.slot-phase-pill {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155 !important;
+  background: #f1f5f9 !important;
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.slot-price-pill {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #0f172a !important;
+}
+
+.slot-activity-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin-bottom: 6px;
+}
+
+.slot-activity-desc {
+  font-size: 0.94rem;
+  color: #334155 !important;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.slot-location-row {
+  font-size: 0.88rem;
+  color: #64748b !important;
+  font-weight: 600;
+}
+
+.tip-pill {
+  background: #fffbeb !important;
+  border: 1px solid #fde68a !important;
+  color: #92400e !important;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.diet-pill {
+  background: #ecfdf5 !important;
+  border: 1px solid #a7f3d0 !important;
+  color: #065f46 !important;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* Destination Discovery Cards (Tab 1) */
+.destination-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 26px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.3s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg) !important;
+  border-color: #e05a47 !important;
+}
+
+.dest-badge-match {
+  background: #ecfdf5 !important;
+  color: #047857 !important;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.dest-city-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #0f172a !important;
+  margin: 8px 0 2px 0;
+}
+
+.dest-country-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.dest-why-text {
+  font-size: 0.92rem;
+  color: #334155 !important;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.dest-spend-box {
+  background: #f8fafc !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  margin-bottom: 16px;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.tag-chip {
+  display: inline-block;
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Vault Cards */
+.vault-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  padding: 22px 26px !important;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Primary and Secondary Buttons */
+.stButton>button {
+  border-radius: 12px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  padding: 10px 22px !important;
+  border: 1.5px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  transition: all 0.2s ease !important;
+}
+
+.stButton>button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border-color: #94a3b8 !important;
+}
+
+.stButton>button[kind="primary"] {
+  background: linear-gradient(135deg, #e05a47 0%, #ff6b6b 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.stButton>button[kind="primary"]:hover {
+  background: linear-gradient(135deg, #c74836 0%, #fa5252 100%) !important;
+  box-shadow: 0 8px 24px rgba(224, 90, 71, 0.3) !important;
+}
