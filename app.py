@@ -7,10 +7,13 @@ Zero sidebar, zero API key clutter on frontend, 100% dynamic AI.
 import streamlit as st
 from datetime import date, timedelta
 import os
-from dotenv import load_dotenv
 
-# Silently load environment variables from .env
-load_dotenv(override=True)
+# Safely load local .env if python-dotenv is installed
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+except ImportError:
+    pass
 
 from config import (
     TRAVEL_VIBES,
@@ -20,6 +23,7 @@ from config import (
     TRAVEL_INTERESTS,
     DIETARY_PREFERENCES,
     CURRENCY_SYMBOLS,
+    get_secret,
 )
 from modules.ai_engine import AIEngine, get_available_groq_models
 from modules.storage import load_all_trips, save_trip, delete_trip, get_trip
@@ -65,13 +69,21 @@ if "custom_dest" not in st.session_state:
     st.session_state.custom_dest = "Kyoto, Japan"
 
 
-# Silent Backend AI Engine Initialization (No frontend keys or technical jargon)
-groq_key = os.getenv("GROQ_API_KEY", "").strip()
+# Silent Backend AI Engine Initialization (Compatible with local .env and Streamlit Cloud st.secrets)
+groq_key = get_secret("GROQ_API_KEY")
+gemini_key = get_secret("GEMINI_API_KEY")
+
+@st.cache_data(show_spinner=False, ttl=3600)
+def _cached_groq_models(key: str):
+    return get_available_groq_models(key)
+
 if groq_key and groq_key.startswith("gsk_"):
-    # Detect accessible models quietly
-    available_models = get_available_groq_models(groq_key)
+    # Detect accessible models quietly with caching for high performance
+    available_models = _cached_groq_models(groq_key)
     chosen_model = available_models[0] if available_models else "openai/gpt-oss-120b"
     engine = AIEngine(provider="groq", api_key=groq_key, model_name=chosen_model)
+elif gemini_key:
+    engine = AIEngine(provider="gemini", api_key=gemini_key, model_name="gemini-1.5-flash")
 else:
     engine = AIEngine(provider="demo")
 

@@ -3,6 +3,37 @@ Configuration and constants for the Personalized Travel Itinerary Planner.
 Skill Wallet Capstone Project 4.
 """
 
+import os
+
+# Safely load local .env if python-dotenv is installed
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=True)
+except ImportError:
+    pass
+
+
+def get_secret(key: str, default: str = "") -> str:
+    """
+    Safely retrieves a configuration key or API secret across deployment environments:
+    1. Checks Streamlit Secrets (st.secrets) for Streamlit Community Cloud.
+    2. Checks OS environment variables (e.g. loaded via local .env file).
+    """
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and key in st.secrets:
+            val = st.secrets[key]
+            if val:
+                return str(val).strip()
+    except Exception:
+        pass
+
+    val = os.getenv(key)
+    if val:
+        return str(val).strip()
+    return default
+
+
 APP_TITLE = "RoamCraft AI"
 APP_SUBTITLE = "Personalized Travel Itinerary Planner"
 APP_CAPTION = "Skill Wallet Capstone Project 4 • Senior SaaS Travel Platform"
